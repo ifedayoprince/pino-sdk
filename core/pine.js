@@ -41,7 +41,7 @@ class Pine {
 
 	//	xhr.send({});
 
-		window.pine.fetch[method](nUrl).then((d)=>{
+		window.pine.fetch[method.toLowerCase()](nUrl).then((d)=>{
 			cb(d.data);
 		}, (e)=>{
 			console.log(`PINO ${url} `, e.message);
