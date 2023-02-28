@@ -14,8 +14,9 @@ class Pine {
 		searchParams.forEach((value, key) => {
 			urlParams[key] = value;
 		});
-		if(!urlParams.origin && urlParams.origin.length < 8) throw new Error("'origin' is invalid" )
+		if(!urlParams.origin && urlParams.origin.length < 8) throw new Error("'origin' is invalid" );
 		await resolver.resolve(this, urlParams.origin, cb);
+		// cb();
 	}
 	on(event, cb) {
 		try {
@@ -27,25 +28,11 @@ class Pine {
 			
 		}
 	}
-	async fetch(method, url, cb) {
+	async fetch(url) {
 		var nUrl = url.replace(/\./g, "/");
 		nUrl = `${window.pine.server}/${nUrl}`;
-		//let xhr = new XMLHttpRequest();
-		//xhr.open(method.toUpperCase(), url);
-	//	xhr.setRequestHeader("Authorization", `Bearer ${window.pine.API_KEY}`);
-		//xhr.onreadystatechange = function () {
-	//		if (xhr.readyState === 4) {
-    //			console.log(xhr);
-		//	}
-	//	};
-
-	//	xhr.send({});
-
-		window.pine.fetch[method.toLowerCase()](nUrl).then((d)=>{
-			cb(d.data);
-		}, (e)=>{
-			console.log(`PINO ${url} `, e.message);
-		});
+	
+		return window.pine.fetch.get(nUrl);
 	}
 }
 
