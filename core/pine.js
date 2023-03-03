@@ -34,6 +34,12 @@ class Pine {
 	
 		return window.pine.fetch.get(nUrl);
 	}
+	async fetchP(url, body) {
+		var nUrl = url.replace(/\./g, "/");
+		nUrl = `${window.pine.server}/${nUrl}`;
+	
+		return window.pine.fetch.post(nUrl);
+	}
 }
 
 export default Pine;
