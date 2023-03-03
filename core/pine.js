@@ -6,7 +6,7 @@ class Pine {
 		}
 		window.pine.fetch = axios.create({baseUrl: window.pine.server}), 
 		window.pine.fetch.defaults.headers.common['Authorization'] = `Bearer ${window.pine.API_KEY}`; 
-		
+		this.params = {};
 	}
 	async resolve(resolver, cb) {
 		var urlParams = {};
