@@ -3,9 +3,9 @@ export class PinoResolver {
 		
 	}
 	async resolve(app, origin, cb) {
-		app.fetch(`pine.protocol.${origin}`).then((data) => {
-			app.params = data.protocol.params;
-			cb()
-		});
+		let data = await app.fetch(`pine.protocol.${origin}`);
+		app.params = data.protocol.params;
+		alert(origin)
+		cb();
 	}
 }
